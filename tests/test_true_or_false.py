@@ -28,7 +28,8 @@ from true_or_false import true_or_false
                             ([], False),
                             ([0], True),
                             ({}, False),
-                            ({'a': 1}, True)
+                            ({'a': 1}, True),
+                            ('', False)
                          ])
 def test_various(test_input, expected):
     assert eval('true_or_false(test_input)') == expected
