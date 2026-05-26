@@ -10,6 +10,10 @@ from true_or_false import true_or_false, environ_true_or_false
     # Integers
     (1, True),
     (0, False),
+    # Floats
+    (1.0, True),
+    (0.0, False),
+    (-1.5, True),
     # None
     (None, False),
     # Lists

@@ -7,7 +7,7 @@ logger = getLogger(__name__)
 
 def true_or_false(s: Any, none_is_false: bool = True, blank_is_false: bool = True) -> bool | None:
     ''' Determine (educated guess) whether an input value is True
-    or False.  Input can be a bool, dict, int or str.  This is
+    or False.  Input can be a bool, dict, float, int or str.  This is
     useful for determining the value of a parameter as passed
     in via environment variable, cli, config file or plain
     python code.
@@ -65,11 +65,9 @@ def true_or_false(s: Any, none_is_false: bool = True, blank_is_false: bool = Tru
             return None
     if isinstance(s, bool):
         return s
-    if isinstance(s, int):
-        if s == 0:
-            return False
-        else:
-            return True
+    if isinstance(s, (int, float)):
+        return s != 0
+
     if isinstance(s, list):
         return len(s) != 0
     if isinstance(s, dict):
