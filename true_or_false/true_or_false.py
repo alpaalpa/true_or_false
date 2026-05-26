@@ -13,12 +13,12 @@ def true_or_false(s: Any, none_is_false: bool = True, blank_is_false: bool = Tru
     python code.
 
     Examples of True values:
-        str: ['true', 't', '1', 'yes', 'y', 't', 'oui']
+        str: ['true', 't', '1', 'yes', 'y', 'oui', '是', 'はい', '예']
         bool: True
         dict: {'a': 1} # any non empty dictionary
-        list: [0]  # any list not zero length
+        list: [0]  # any non-empty list
     Examples of False values:
-        str FALSES = ['false', 'f', '0', 'no', 'n', 'non']
+        str: ['false', 'f', '0', 'no', 'n', 'non', '不', 'いいえ', '아니요']
         bool: False
         dict: {}  # empty dictionary
         list: []  # empty list
@@ -33,10 +33,30 @@ def true_or_false(s: Any, none_is_false: bool = True, blank_is_false: bool = Tru
         if blank_is_false is False, return None if 's' is ''
 
     '''
-    TRUES = ['true', 't', '1', 'yes', 'y', 'oui', 'ja', 'si', 'da', 'ano',
-             'jah', 'haan']
-    FALSES = ['false', 'f', '0', 'no', 'n', 'non', 'nein', 'net', 'ne',
-              'nee', 'nej', 'nahin']
+    TRUES = [
+        # English
+        'true', 't', '1', 'yes', 'y',
+        # European languages
+        'oui', 'ja', 'si', 'da', 'ano', 'jah', 'haan',
+        # Chinese (Simplified & Traditional)
+        '是', '对', '對', '正确', '正確', '真',
+        # Japanese
+        'はい',
+        # Korean
+        '예', '네',
+    ]
+    FALSES = [
+        # English
+        'false', 'f', '0', 'no', 'n',
+        # European languages
+        'non', 'nein', 'net', 'ne', 'nee', 'nej', 'nahin',
+        # Chinese (Simplified & Traditional)
+        '不', '否', '不对', '不對', '不是', '假',
+        # Japanese
+        'いいえ',
+        # Korean
+        '아니요', '아니',
+    ]
 
     if s is None:
         if none_is_false:

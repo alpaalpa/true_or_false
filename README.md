@@ -8,16 +8,20 @@ in via environment variable, cli, config file or plain
 python code.
 
 Examples of True values:
-  str: ['true', 't', '1', 'yes', 'y', 'oui']
+  str: ['true', 't', '1', 'yes', 'y', 'oui', '是', 'はい', '예', ...]
   bool: True
   dict: {'a': 1} # any non empty dictionary
   list: [0]  # any non-empty list
 
 Examples of False values:
-  str: ['false', 'f', '0', 'no', 'n', 'non']
+  str: ['false', 'f', '0', 'no', 'n', 'non', '不', 'いいえ', '아니요', ...]
   bool: False
   dict: {}  # empty dictionary
   list: []  # empty list
+
+Supported languages include English, French, German, Spanish, Italian, Russian,
+Czech, Dutch, Swedish, Hindi, Simplified Chinese, Traditional Chinese, Japanese,
+and Korean.
 
 ## Installation
 

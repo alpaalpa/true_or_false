@@ -53,6 +53,27 @@ from true_or_false import true_or_false, environ_true_or_false
     ('nahin', False), # Hindi
     # Blank string
     ('', False),
+    # Chinese (Simplified & Traditional)
+    ('是', True),
+    ('对', True),
+    ('對', True),
+    ('正确', True),
+    ('正確', True),
+    ('真', True),
+    ('不', False),
+    ('否', False),
+    ('不对', False),
+    ('不對', False),
+    ('不是', False),
+    ('假', False),
+    # Japanese
+    ('はい', True),
+    ('いいえ', False),
+    # Korean
+    ('예', True),
+    ('네', True),
+    ('아니요', False),
+    ('아니', False),
 ])
 def test_various(test_input, expected):
     assert true_or_false(test_input) == expected
