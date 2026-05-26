@@ -1,10 +1,11 @@
 from logging import getLogger
+from typing import Any
 import os
 
 logger = getLogger(__name__)
 
 
-def true_or_false(s, none_is_false=True, blank_is_false=True):
+def true_or_false(s: Any, none_is_false: bool = True, blank_is_false: bool = True) -> bool | None:
     ''' Determine (educated guess) whether an input value is True
     or False.  Input can be a bool, dict, int or str.  This is
     useful for determining the value of a parameter as passed
@@ -22,8 +23,8 @@ def true_or_false(s, none_is_false=True, blank_is_false=True):
         dict: {}  # empty dictionary
         list: []  # empty list
 
-    Parameter
-    ---------
+    Parameters
+    ----------
     none_is_false: bool
         if none_is_false is True, treat None as False
         if none_is_false is False, return None if `s` is None
@@ -32,7 +33,7 @@ def true_or_false(s, none_is_false=True, blank_is_false=True):
         if blank_is_false is False, return None if 's' is ''
 
     '''
-    TRUES = ['true', 't', '1', 'yes', 'y', 't', 'oui', 'ja', 'si', 'da', 'ano',
+    TRUES = ['true', 't', '1', 'yes', 'y', 'oui', 'ja', 'si', 'da', 'ano',
              'jah', 'haan']
     FALSES = ['false', 'f', '0', 'no', 'n', 'non', 'nein', 'net', 'ne',
               'nee', 'nej', 'nahin']
@@ -57,16 +58,21 @@ def true_or_false(s, none_is_false=True, blank_is_false=True):
         if s.strip() == '':
             if blank_is_false:
                 return False
+            else:
+                return None
         if s.strip().lower() in TRUES:
             return True
         elif s.strip().lower() in FALSES:
             return False
+        else:
+            logger.warning(f"Cannot determine True/False from {s}")
+            return None
     else:
         logger.warning(f"Cannot determine True/False from {s}")
         return None
 
 
-def environ_true_or_false(env_var: str, default=None) -> bool:
+def environ_true_or_false(env_var: str, default: Any = None) -> bool | None:
     ''' Check whether `env_var` contains a 'true' like value such as
            1, true, y, yes, t, oui
         Use default value if the environment variable does not exist.
