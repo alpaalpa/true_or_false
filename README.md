@@ -61,5 +61,5 @@ from true_or_false import environ_true_or_false
 result = environ_true_or_false('MY_FLAG')
 
 # Provide a default in case the variable is not set.
-result = environ_true_or_false('MY_FLAG', default='false')
+result = environ_true_or_false('MY_FLAG', default=False)
 ```
