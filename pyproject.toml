@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "true_or_false"
-version = "0.1.4"
+version = "0.2.0"
 description = "A simple python module to determine whether an input is True or False."
 authors = ["Albert Pang <alpaalpa@mac.com>"]
 license = "MIT"
